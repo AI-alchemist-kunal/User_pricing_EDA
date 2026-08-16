@@ -26,16 +26,12 @@ pip install -r requirements.txt
 
 ## 2. Add your data
 
-Put the full dataset in `data/` and either name it `pricing_data.xlsx`
-or pass its path with `--data`. `.xlsx` and `.csv` are both supported.
+Put the full dataset in `data/` 
 
 ## 3. Run
 
 ```bash
-python run.py                       # runs everything on data/pricing_data.xlsx
-python run.py --data data/my.csv    # custom file
-python run.py --steps eda           # just the EDA
-python run.py --steps eda,train,evaluate,optimize
+python run.py                       
 ```
 
 Outputs land in `outputs/`:
