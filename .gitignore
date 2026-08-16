@@ -1,0 +1,22 @@
+# data & generated artifacts
+data/*.xlsx
+data/*.csv
+outputs/*.csv
+outputs/*.txt
+outputs/figures/*
+outputs/models/*
+!**/.gitkeep
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+.DS_Store
+
+# os / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.env
