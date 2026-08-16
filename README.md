@@ -75,21 +75,4 @@ If `lightgbm` is not installed, Tier 2 automatically falls back to
 scikit-learn's `HistGradientBoostingClassifier`, which also supports monotone
 constraints and native missing-value handling — so the pipeline still runs.
 
-## 6. Design notes (worth reading)
 
-- **Leakage first.** `add_to_cart_flag` is an *outcome* and is never a model
-  input. The `*_when_booked` / `*_when_bounced` columns are excluded by default
-  (`config.LEAKAGE_SUSPECTS`) until you confirm they are computed strictly
-  *before* `date`. Audit, then re-include if clean.
-- **Missingness is informative.** History features are missing for new/thin
-  users; we add `*_missing` flags instead of blindly imputing price anchors.
-- **Split by time, not at random**, because you predict the *next* session.
-- **The optimizer recomputes the price levers** for every candidate price, so
-  the demand curve it sweeps is internally consistent.
-
-## 7. Caveats
-
-This is an **observational** pipeline: the price effect is identified only under
-an unconfoundedness assumption (given the controls). The gold-standard
-validation — and the only clean source of price variation — is an online
-**A/B price test**. Treat the revenue-simulation numbers as directional.
